@@ -32,7 +32,7 @@ FROM Vizita
 WHERE DataSosire BETWEEN '2016-01-01 00:00:00.000' AND '2016-12-31 23:59:59.999'
 
 --numar mediu de masini pe zi parcursul saptamanii 1-7 iulie 2016
-SELECT COUNT(*)/(7.00*24.00)
+SELECT COUNT(*)/7.00
 FROM Vizita
 WHERE DataSosire BETWEEN '2016-07-01 00:00:00.000' AND '2016-07-07 23:59:59.999'
 
