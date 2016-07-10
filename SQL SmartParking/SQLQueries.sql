@@ -61,4 +61,24 @@ GROUP BY DATENAME(dw,DataSosire)
 ORDER BY COUNT(*) DESC
 
 
+------ care este intervalul orar cu cei mai multi utilizatori ai parcarii (cand sunt cele mai multe masini)
+-----INTERSECTIE A INTERVALELOR (trebuie repetat pana ramane un singur interval)
 
+--SELECT a.ID AS Interval1ID,b.ID AS Interval2ID,
+--    (CASE WHEN a.DataSosire < b.DataSosire
+--			THEN b.DataSosire
+--			ELSE a.DataSosire END) AS OverlapStartTime,
+--			(CASE WHEN a.DataPlecare < b.DataPlecare
+--			THEN a.DataPlecare
+--			ELSE b.DataPlecare END) AS OverlapEndTime,
+--    a.MasinaID AS MasinaID1,
+--    b.MasinaID AS MasinaID2
+--FROM Vizita AS a
+--INNER JOIN Vizita AS b ON
+--    a.ID <> b.ID AND
+--    --- a se termina inaintea inceperii lui b
+--    a.DataPlecare>b.DataSosire AND
+--    --- a incepe inaintea lui terminarii lui b
+--    a.DataSosire<b.DataPlecare
+----- elimina duplicatele
+--WHERE a.DataSosire<b.DataSosir
