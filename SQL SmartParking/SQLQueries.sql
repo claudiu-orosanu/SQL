@@ -37,10 +37,13 @@ FROM Vizita
 WHERE DataSosire BETWEEN '2016-07-01 00:00:00.000' AND '2016-07-07 23:59:59.999'
 
 --cel mai fidel client
-SELECT MasinaID,COUNT(*) as Vizite
-FROM Vizita
-GROUP BY MasinaID
-ORDER BY COUNT(*) DESC
+SELECT m.ID,m.NumarInmatriculare,SUM(v.Durata) [TimpTotal],COUNT(*) as Vizite
+FROM Vizita v
+INNER JOIN Masina m
+ON v.MasinaID = m.ID
+GROUP BY m.ID,m.NumarInmatriculare
+ORDER BY TimpTotal DESC
+
 
 --intervalul mediu petrecut de clienti in parcare 
 SELECT AVG(Durata)
