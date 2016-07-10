@@ -47,10 +47,10 @@ SELECT AVG(Durata)
 FROM Vizita
 
 --- care este a fost cea mai aglomerata zi din anul 2016 in ceea ce priveste parcarea
-SELECT DATEPART(day,DataSosire) as Zi, COUNT(*) [Numar masini parcate]
+SELECT DATEPART(day,DataSosire) as Zi,DATEPART(month,DataSosire) as Luna, COUNT(*) [Numar masini parcate]
 FROM Vizita
 WHERE DATEPART(year,DataSosire) = 2016
-GROUP BY DATEPART(day,DataSosire)
+GROUP BY DATEPART(day,DataSosire),DATEPART(month,DataSosire)
 ORDER BY COUNT(*) DESC
 
 ----- care este cea mai plina zi din saptamana 1-7 iulie 2016
