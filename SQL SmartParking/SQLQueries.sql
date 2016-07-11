@@ -1,7 +1,7 @@
 ---- care este intervalul orar cu cei mai multi utilizatori ai parcarii (cand sunt cele mai multe masini)
-SELECT DATEPART(hour,DataSosire) as Hour,Count(*) as Cnt
+SELECT DATEPART(hour,DataSosire) as Hour1,DATEPART(hour,DataSosire)+1 as Hour2,Count(*) as Cnt
 FROM Vizita
-GROUP BY DATEPART(hour,DataSosire)
+GROUP BY DATEPART(hour,DataSosire),DATEPART(hour,DataSosire)
 ORDER BY Count(*) DESC
 
 
