@@ -21,10 +21,13 @@ WHERE DataSosire BETWEEN '2016-07-05 00:00:00.00' AND '2016-07-05 23:59:59.999'
 
 
 
---numar mediu de masini pe ora in ziua de 5 iulie 2016
-SELECT COUNT(*)/24.00
-FROM Vizita
-WHERE DataSosire BETWEEN '2016-07-05 00:00:00.000' AND '2016-07-05 23:59:59.999'
+--numar mediu de masini in fiecare ora in ziua de 5 iulie 2016
+SELECT s.[Hour], COUNT(*) AS Vizite
+FROM (SELECT DATEPART(hour,DataSosire) AS Hour
+	  FROM Vizita 
+	  WHERE DataSosire BETWEEN '2016-07-05 00:00:00.000' AND '2016-07-05 23:59:59.999')s
+GROUP BY s.[Hour]
+
 
 --numar mediu de masini pe zi pe parcursul anului 2016
 SELECT COUNT(*)/365.00
