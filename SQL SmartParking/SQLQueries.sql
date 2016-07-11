@@ -6,16 +6,16 @@ ORDER BY Count(*) DESC
 
 
 --- incasarile obtinute de la clientii mall-ului prin utilizarea parcarii pe o luna, zi, an 
-SELECT SUM((Durata-2)*2) [Incasari an 2016]
+SELECT SUM((CASE WHEN Durata > 2 THEN (Durata-2)*2 ELSE 0 END)) [Incasari an 2016]
 FROM Vizita
 WHERE DATEPART(year,DataSosire) = 2016
 
-SELECT SUM((Durata-2)*2) [Incasari iulie 2016]
+SELECT SUM((CASE WHEN Durata > 2 THEN (Durata-2)*2 ELSE 0 END)) [Incasari iulie 2016]
 FROM Vizita
 WHERE DATEPART(year,DataSosire) = 2016
 AND DATEPART(month,DataSosire) = 7
 
-SELECT SUM((Durata-2)*2) [Incasari 5 iulie 2016]
+SELECT SUM((CASE WHEN Durata > 2 THEN (Durata-2)*2 ELSE 0 END)) [Incasari 5 iulie 2016]
 FROM Vizita
 WHERE DataSosire BETWEEN '2016-07-05 00:00:00.00' AND '2016-07-05 23:59:59.999'
 
